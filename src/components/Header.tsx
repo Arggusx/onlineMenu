@@ -5,8 +5,9 @@ import logoNumber from "../assets/logo/whatsapp-2.png"
 
 const Header = () => {
   return (
-    <header className=" w-full h-[420px] bg-home bg-cover bg-center">
-      <div className='w-full h-full flex flex-col justify-center items-center    bg-[url(/src/assets/logo/bg-1.0.png)]'>
+    <div>
+        <header className=" w-full h-[420px] bg-home bg-cover bg-center">
+        <div className='w-full h-full flex flex-col justify-center items-center bg-[url(/src/assets/logo/bg-1.0.png)]'>
             <img className="w-32 transition-transform duration-300 pt-12 pb-5 hover:scale-110" src={logoBurger} alt="Logo" />          
             <h1 className="pb-5 text-4x1 font-bold font-[Poppins, sans-serif] text-4xl"><strong>LET's GO BURGER</strong></h1>
             <div className="px-4 py-1 rounded-lg bg-red-500">
@@ -28,9 +29,22 @@ const Header = () => {
                     @letsgoburgermaceio
                 </a> 
             </div>    
-        </div> 
-    </header>           
-  )
-}
+            </div> 
+        </header>    
+            <h2 className='text-2xl md:text-4xl font-bold text-center mt-10 mb-10'>Conheça nosso cardápio</h2>
+            <nav className="flex mx-auto max-w-7xl gap-3 justify-between md:justify-evenly items-center sticky top-2 p-1 bg-[#f6f7f8] rounded border-2 border-gray-400 border-solid overflow-x-auto overflow-hidden ">
+            <a className="p-2 text-center" href="#artesanal">Burgers Artesanal</a>
+            <div className="cursor-default">|</div>
+            <a className="p-2 text-center" href="#tradicional">Burgers Tradicional</a>
+            <div className="cursor-default">|</div>
+            <a className="p-2 text-center" href="#refrigerante">Refrigerantes</a>
+            <div className="cursor-default">|</div>
+            <a className="p-2 text-center" href="#suco">Sucos</a>
+            <div className="cursor-default">|</div>
+            <a className="p-2 text-center" href="#sobremesa">Sobremesas</a>
+        </nav>
+    </div>
+   )
+ }
 
 export default Header
