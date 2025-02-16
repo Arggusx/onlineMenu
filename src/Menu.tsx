@@ -70,14 +70,12 @@ const Menu: React.FC = () => {
 
       {/* SUCOS */}
 
-    
-
-      {/* SUCOS */}
       <h2 id="suco" className="text-3xl md:text-4xl mt-30 mb-10 mx-auto max-w-7xl px-2 pt-24">
         Sucos
       </h2>
 
-      {/* Exibição das duas opções iniciais */}
+      {/* Exibição das opções "com Água" e "com Leite" */}
+
       {!selectedJuiceType && (
         <div className="grid grid-cols-1 md:grid-cols-2 mb-40 gap-7 mx-auto max-w-7xl px-2">
           {/* Suco com Água */}
@@ -93,6 +91,7 @@ const Menu: React.FC = () => {
           </div>
 
           {/* Suco com Leite */}
+
           <div className=" border border-orange-300 p-5 rounded-lg shadow-md text-center">
             <h3 className="text-2xl font-bold">Suco com Leite</h3>
             <p className="text-gray-600">Cremoso e nutritivo</p>
@@ -106,7 +105,8 @@ const Menu: React.FC = () => {
         </div>
       )}
 
-      {/* Exibição das polpas disponíveis */}
+      {/* EXIBIÇÃO DAS POLPAS */}
+
       {selectedJuiceType && (
         <>
           <button 
@@ -128,6 +128,31 @@ const Menu: React.FC = () => {
             ))}
           </main>
         </>
+      )}
+
+      {/* ÁGUAS */}
+
+      <h2 id="sobremesa" className="text-3xl md:text-4xl mt-30 mb-10 mx-auto max-w-7xl px-2 pt-24">
+        Água
+      </h2>
+
+      {!selectedJuiceType && (
+        <div className="grid grid-cols-1 md:grid-cols-2 mb-40 gap-7 mx-auto max-w-7xl px-2">
+          {/* ÁGUA SEM GÁS */}
+          <div className="border p-5 border-blue-500 rounded-lg shadow-md text-center">
+            <h3 className="text-2xl font-bold">Água mineral (Sem gás)</h3>
+            <p className="text-white text-2xl">R$ 3,00</p>
+            <button className="mt-3 px-5 py-2 bg-green-500 text-white rounded">Buy</button>
+          </div>
+
+          {/* ÁGUA COM GÁS */}
+
+          <div className=" border border-blue-500 p-5 rounded-lg shadow-md text-center">
+            <h3 className="text-2xl font-bold">Água Com gás</h3>
+            <p className="text-white text-2xl">R$ 5,00</p>
+            <button className="mt-3 px-5 py-2 bg-green-500 text-white rounded">Buy</button>
+          </div>
+        </div>
       )}
     </section>
   );
