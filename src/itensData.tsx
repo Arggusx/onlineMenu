@@ -177,6 +177,20 @@ const menuItems = [
         type: "suco", 
         juiceType: "leite" 
     },
+    {   
+        name: "Água", 
+        description: "Água mineral", 
+        price: 7.99, image: "src/assets/logo/logo.png", 
+        type: "agua",
+        juiceType: "mineral"
+    },
+    {   
+        name: "Água", 
+        description: "Água com gás", 
+        price: 7.99, image: "src/assets/logo/logo.png", 
+        type: "agua", 
+        juiceType: "mineral"
+    },
   ];
   
   export default menuItems;
