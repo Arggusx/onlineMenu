@@ -15,22 +15,38 @@ const Nav = () => {
                       Burgers Artesanal
             </Link>
             <div className="cursor-default">|</div>
-            <a className="p-2 text-center" href="#tradicional">Burgers Tradicional</a>
-            <div className="cursor-default">|</div>
-            <a className="p-2 text-center" href="#refrigerante">Refrigerantes</a>
-            <div className="cursor-default">|</div>
             <Link
-                to="suco"
+                to="tradicional"
                 spy={true}
                 smooth={true}
                 offset={-70}
                 duration={500}
                 style={{ cursor: 'pointer' }} 
                 className='duration-200 p-2 text-center'>
-                      Sucos
+                      Burgers Tradicionais
             </Link>
             <div className="cursor-default">|</div>
-            <a className="p-2 text-center" href="#sobremesa">Sobremesas</a>
+            <Link
+                to="sobremesa"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                style={{ cursor: 'pointer' }} 
+                className='duration-200 p-2 text-center'>
+                      Sobremesas
+            </Link>
+            <div className="cursor-default">|</div>
+            <Link
+                to="bebida"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                style={{ cursor: 'pointer' }} 
+                className='duration-200 p-2 text-center'>
+                      Bebidas
+            </Link>
         </nav>
     </>
    )
