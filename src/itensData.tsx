@@ -191,6 +191,34 @@ const menuItems = [
         type: "agua", 
         juiceType: "mineral"
     },
+    {
+        name: "Sobremesa 01",
+        description: "",
+        price: 0.00,
+        image: "src/assets/logo/logo.png",
+        type: "sobremesa",
+    },
+    {
+        name: "Sobremesa 02",
+        description: "",
+        price: 0.00,
+        image: "src/assets/logo/logo.png",
+        type: "sobremesa",
+    },
+    {
+        name: "Sobremesa 03",
+        description: "",
+        price: 0.00,
+        image: "src/assets/logo/logo.png",
+        type: "sobremesa",
+    },
+    {
+        name: "Sobremesa 04",
+        description: "",
+        price: 0.00,
+        image: "src/assets/logo/logo.png",
+        type: "sobremesa",
+    },
   ];
   
   export default menuItems;
