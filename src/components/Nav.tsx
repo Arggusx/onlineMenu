@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 const Nav = () => {
   return (
     <>        
-        <nav className="flex mx-auto max-w-7xl gap-3 justify-between md:justify-evenly items-center sticky top-2 p-1 bg-[#f6f7f8] rounded border-2 border-gray-400 border-solid overflow-x-auto overflow-hidden ">
+        <nav className="flex mx-auto max-w-7xl mt-10 gap-3 justify-between md:justify-evenly items-center sticky top-2 p-1 bg-[#f6f7f8] rounded border-2 border-gray-400 border-solid overflow-x-auto overflow-hidden ">
             <Link
                 to="artesanal"
                 spy={true}
