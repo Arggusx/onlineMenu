@@ -3,11 +3,17 @@ import MenuItem from "./components/MenuItem";
 import menuItems from "./itensData";
 import Footer from "./components/Footer";
 
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+}
 const Menu: React.FC = () => {
   const [selectedJuiceType, setSelectedJuiceType] = useState<string | null>(null);
-  const [cart, setCart] = useState<{ name: string; price: number; quantity: number }[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = (name: string, price: number) => {
+  const addToCart = (id: number, name: string, price: number) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.name === name);
       if (existingItem) {
@@ -15,18 +21,18 @@ const Menu: React.FC = () => {
           item.name === name ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
-        return [...prevCart, { name, price, quantity: 1 }];
+        return [...prevCart, { id, name, price, quantity: 1 }];
       }
     });
   };
-  
+
   const removeFromCart = (name: string) => {
     setCart((prevCart) => {
       return prevCart
-        .map((item) => 
+        .map((item) =>
           item.name === name ? { ...item, quantity: item.quantity - 1 } : item
         )
-        .filter((item) => item.quantity > 0); // Remove o item se a quantidade chegar a 0
+        .filter((item) => item.quantity > 0);
     });
   };
 
@@ -38,150 +44,146 @@ const Menu: React.FC = () => {
     <section>
       {/* BURGERS ARTESANAIS */}
       <h2
-  id="artesanal"
-  className="text-3xl md:text-4xl font-bold text-amber-800 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-20 after:h-1.5 after:bg-amber-500 after:rounded-full"
->
-  Burgers Artesanais
-</h2>
-<main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-amber-100 from-amber-50 border-2 border-amber-200 rounded-3xl">
-  {menuItems
-    .filter((item) => item.type === "artesanal")
-    .map((item, index) => (
-      <MenuItem key={index} {...item} addToCart={addToCart} />
-    ))}
-</main>
-
-{/* BURGERS TRADICIONAIS */}
-<h2
-  id="tradicional"
-  className="text-3xl md:text-4xl font-bold text-amber-800 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-amber-500 after:rounded-full"
->
-  Burgers Tradicionais
-</h2>
-<main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-amber-100 from-amber-50 border-2 border-amber-200 rounded-3xl">
-  {menuItems
-    .filter((item) => item.type === "tradicional")
-    .map((item, index) => (
-      <MenuItem key={index} {...item} addToCart={addToCart} />
-    ))}
-</main>
-
-{/* SOBREMESAS */}
-<h2
-  id="sobremesa"
-  className="text-3xl md:text-4xl font-bold text-pink-700 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-pink-400 after:rounded-full"
->
-  Sobremesas
-</h2>
-<main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-pink-100 from-pink-50 border-2 border-pink-200 rounded-3xl">
-  {menuItems
-    .filter((item) => item.type === "sobremesa")
-    .map((item, index) => (
-      <MenuItem key={index} {...item} addToCart={addToCart} />
-    ))}
-</main>
-
-{/* BEBIDAS */}
-<h2
-  id="bebida"
-  className="text-3xl md:text-4xl font-bold text-blue-700 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-blue-400 after:rounded-full"
->
-  Bebidas
-</h2>
-
-{/* REFRIGERANTES */}
-<h3
-  className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block"
->
-  Refrigerantes
-</h3>
-<main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-blue-100 from-blue-50 border-2 mb-10 border-blue-200 rounded-3xl">
-  {menuItems
-    .filter((item) => item.type === "refrigerante")
-    .map((item, index) => (
-      <MenuItem key={index} {...item} addToCart={addToCart} />
-    ))}
-</main>
-
-        {/* SUCOS */}
-        
-    
-        <h3
-  className="text-xl md:text-2xl font-semibold text-orange-600 mb-6  md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block"
->
-  Sucos
-</h3>
-{!selectedJuiceType ? (
-  <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4">
-    <div className="border-2 border-orange-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-orange-100 to-orange-200 hover:shadow-xl transition-shadow duration-300 text-center">
-      <h3 className="text-xl font-bold text-gray-800">Sucos com Água</h3>
-      <button
-        className="mt-4 px-6 py-2 bg-orange-400 text-white rounded-full hover:bg-orange-500 hover:scale-105 transform transition-all duration-200"
-        onClick={() => setSelectedJuiceType("agua")}
+        id="artesanal"
+        className="text-3xl md:text-4xl font-bold text-amber-800 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-amber-500 after:rounded-full"
       >
-        Escolher
-      </button>
-    </div>
-    <div className="border-2 border-orange-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-orange-100 to-orange-200 hover:shadow-xl transition-shadow duration-300 text-center">
-      <h3 className="text-xl font-bold text-gray-800">Sucos com Leite</h3>
-      <button
-        className="mt-4 px-6 py-2 bg-orange-400 text-white rounded-full hover:bg-orange-500 hover:scale-105 transform transition-all duration-200"
-        onClick={() => setSelectedJuiceType("leite")}
+        Burgers Artesanais
+      </h2>
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-amber-100 from-amber-50 border-2 border-amber-200 rounded-3xl">
+        {menuItems
+          .filter((item) => item.type === "artesanal")
+          .map((item, index) => (
+            <MenuItem key={index} {...item} addToCart={addToCart} />
+          ))}
+      </main>
+
+      {/* BURGERS TRADICIONAIS */}
+      <h2
+        id="tradicional"
+        className="text-3xl md:text-4xl font-bold text-amber-800 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-amber-500 after:rounded-full"
       >
-        Escolher
-      </button>
-    </div>
-  </div>
-) : (
-  <>
-    <button
-      className="ml-10 lg:ml-20 mt-6 px-5 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors duration-200"
-      onClick={() => setSelectedJuiceType(null)}
-    >
-      ← Voltar
-    </button>
-    <h3 className="text-2xl font-bold mt-6 mb-6 text-center text-gray-800">
-      {selectedJuiceType === "agua" ? "Polpas para Suco com Água" : "Polpas para Suco com Leite"}
-    </h3>
-    <main className="border-2 border-orange-300 bg-gradient-to-t to-orange-200 from-orange-100 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-orange-50">
-      {menuItems
-        .filter((item) => item.type === "suco" && item.juiceType === selectedJuiceType)
-        .map((item, index) => (
-          <MenuItem key={index} {...item} addToCart={addToCart} />
-        ))}
-    </main>
-  </>
-)}
+        Burgers Tradicionais
+      </h2>
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-amber-100 from-amber-50 border-2 border-amber-200 rounded-3xl">
+        {menuItems
+          .filter((item) => item.type === "tradicional")
+          .map((item, index) => (
+            <MenuItem key={index} {...item} addToCart={addToCart} />
+          ))}
+      </main>
+
+      {/* SOBREMESAS */}
+      <h2
+        id="sobremesa"
+        className="text-3xl md:text-4xl font-bold text-pink-700 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-pink-400 after:rounded-full"
+      >
+        Sobremesas
+      </h2>
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-pink-100 from-pink-50 border-2 border-pink-200 rounded-3xl">
+        {menuItems
+          .filter((item) => item.type === "sobremesa")
+          .map((item, index) => (
+            <MenuItem key={index} {...item} addToCart={addToCart} />
+          ))}
+      </main>
+
+      {/* BEBIDAS */}
+      <h2
+        id="bebida"
+        className="text-3xl md:text-4xl font-bold text-blue-700 mb-10 mx-auto max-w-6xl px-4 pt-20 relative after:content-[''] after:absolute after:left-4 after:bottom-[-8px] after:w-16 after:h-1 after:bg-blue-400 after:rounded-full"
+      >
+        Bebidas
+      </h2>
+
+      {/* REFRIGERANTES */}
+      <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
+        Refrigerantes
+      </h3>
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-blue-100 from-blue-50 border-2 mb-10 border-blue-200 rounded-3xl">
+        {menuItems
+          .filter((item) => item.type === "refrigerante")
+          .map((item, index) => (
+            <MenuItem key={index} {...item} addToCart={addToCart} />
+          ))}
+      </main>
+
+      {/* SUCOS */}
+      <h3 className="text-xl md:text-2xl font-semibold text-orange-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
+        Sucos
+      </h3>
+      {!selectedJuiceType ? (
+        <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4">
+          <div className="border-2 border-orange-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-orange-100 to-orange-200 hover:shadow-xl transition-shadow duration-300 text-center">
+            <h3 className="text-xl font-bold text-gray-800">Sucos com Água</h3>
+            <button
+              className="mt-4 px-6 py-2 bg-orange-400 text-white rounded-full hover:bg-orange-500 hover:scale-105 transform transition-all duration-200"
+              onClick={() => setSelectedJuiceType("agua")}
+            >
+              Escolher
+            </button>
+          </div>
+          <div className="border-2 border-orange-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-orange-100 to-orange-200 hover:shadow-xl transition-shadow duration-300 text-center">
+            <h3 className="text-xl font-bold text-gray-800">Sucos com Leite</h3>
+            <button
+              className="mt-4 px-6 py-2 bg-orange-400 text-white rounded-full hover:bg-orange-500 hover:scale-105 transform transition-all duration-200"
+              onClick={() => setSelectedJuiceType("leite")}
+            >
+              Escolher
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <button
+            className="ml-10 lg:ml-20 mt-6 px-5 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors duration-200"
+            onClick={() => setSelectedJuiceType(null)}
+          >
+            ← Voltar
+          </button>
+          <h3 className="text-2xl font-bold mt-6 mb-6 text-center text-gray-800">
+            {selectedJuiceType === "agua" ? "Polpas para Suco com Água" : "Polpas para Suco com Leite"}
+          </h3>
+          <main className="border-2 border-orange-300 bg-gradient-to-t to-orange-200 from-orange-100 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-orange-50">
+            {menuItems
+              .filter((item) => item.type === "suco" && item.juiceType === selectedJuiceType)
+              .map((item, index) => (
+                <MenuItem key={index} {...item} addToCart={addToCart} />
+              ))}
+          </main>
+        </>
+      )}
 
       {/* ÁGUA */}
-      <h3
-  className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block"
->
-  Água
-</h3>
-<div className="grid pb-15 grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4">
-  <div className="border-2 border-blue-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300 hover:shadow-xl transition-shadow duration-300 text-center">
-    <h3 className="text-xl font-bold text-gray-800">Água Mineral (Sem Gás)</h3>
-    <p className="text-gray-600 text-xl font-medium mt-2">R$ 3,00</p>
-    <button
-      onClick={() => addToCart("Água Mineral (Sem Gás)", 3)}
-      className="mt-4 px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 hover:scale-105 transform transition-all duration-200"
-    >
-      Adicionar
-    </button>
-  </div>
-  <div className="border-2 border-blue-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300 hover:shadow-xl transition-shadow duration-300 text-center">
-    <h3 className="text-xl font-bold text-gray-800">Água com Gás</h3>
-    <p className="text-gray-600 text-xl font-medium mt-2">R$ 5,00</p>
-    <button
-      onClick={() => addToCart("Água com Gás", 5)}
-      className="mt-4 px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 hover:scale-105 transform transition-all duration-200"
-    >
-      Adicionar
-    </button>
-  </div>
-</div>
-        <Footer cart={cart} getCartItemCount={getCartItemCount} removeFromCart={removeFromCart} />  
+      <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
+        Água
+      </h3>
+      <div className="grid pb-15 grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4">
+        <div className="border-2 border-blue-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300 hover:shadow-xl transition-shadow duration-300 text-center">
+          <h3 className="text-xl font-bold text-gray-800">Água Mineral (Sem Gás)</h3>
+          <p className="text-gray-600 text-xl font-medium mt-2">R$ 3,00</p>
+          <button
+            onClick={() => addToCart(100, "Água Mineral (Sem Gás)", 3)} // Adicionado id temporário
+            className="mt-4 px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 hover:scale-105 transform transition-all duration-200"
+          >
+            Adicionar
+          </button>
+        </div>
+        <div className="border-2 border-blue-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300 hover:shadow-xl transition-shadow duration-300 text-center">
+          <h3 className="text-xl font-bold text-gray-800">Água com Gás</h3>
+          <p className="text-gray-600 text-xl font-medium mt-2">R$ 5,00</p>
+          <button
+            onClick={() => addToCart(101, "Água com Gás", 5)} // Adicionado id temporário
+            className="mt-4 px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 hover:scale-105 transform transition-all duration-200"
+          >
+            Adicionar
+          </button>
+        </div>
+      </div>
+      <Footer
+        cart={cart}
+        getCartItemCount={getCartItemCount}
+        removeFromCart={removeFromCart}
+      />
     </section>
   );
 };

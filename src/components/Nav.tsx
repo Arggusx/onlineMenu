@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 const Nav = () => {
   return (
     <>        
-        <nav className="flex mx-auto max-w-7xl mt-10 gap-3 justify-between md:justify-evenly items-center sticky top-2 p-1 bg-[#f6f7f8] rounded border-2 border-gray-400 border-solid overflow-x-auto overflow-hidden ">
+        <nav className="flex mx-auto z-30 max-w-7xl mt-10 gap-3 justify-between md:justify-evenly items-center sticky top-2 p-1 bg-[#f6f7f8] rounded border-2 border-gray-400 border-solid overflow-x-auto overflow-hidden ">
             <Link
                 to="artesanal"
                 spy={true}
@@ -12,7 +12,7 @@ const Nav = () => {
                 duration={500}
                 style={{ cursor: 'pointer' }} 
                 className='duration-200 p-2 text-center'>
-                      Burgers Artesanal
+                      Burgers Artesanais
             </Link>
             <div className="cursor-default">|</div>
             <Link
