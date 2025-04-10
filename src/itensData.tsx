@@ -104,6 +104,7 @@ const menuItems = [
         type: "refrigerante",
     },
     { 
+        id: 14,
         name: "Suco de Maracujá", 
         description: "Suco natural de Maracujá", 
         price: 7.99, 
@@ -111,7 +112,8 @@ const menuItems = [
         type: "suco", 
         juiceType: "agua" 
     },
-    {   
+    {  
+        id: 15, 
         name: "Suco de Cajú", 
         description: "Suco natural de Cajú", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -119,6 +121,7 @@ const menuItems = [
         juiceType: "agua" 
     },
     { 
+        id: 16,
         name: "Suco de Acerola", 
         description: "Suco natural de Acerola", 
         price: 7.99, 
@@ -127,6 +130,7 @@ const menuItems = [
         juiceType: "agua" 
     },
     {   
+        id: 17,
         name: "Suco de Goiaba", 
         description: "Suco natural de Goiaba", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -134,6 +138,7 @@ const menuItems = [
         juiceType: "agua" 
     },
     {   
+        id: 18,
         name: "Suco de Graviola", 
         description: "Suco natural de Graviola", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -141,6 +146,7 @@ const menuItems = [
         juiceType: "agua" 
     },
     { 
+        id: 19,
         name: "Suco de Maracujá", 
         description: "Suco natural de Maracujá", 
         price: 7.99, 
@@ -149,6 +155,7 @@ const menuItems = [
         juiceType: "leite" 
     },
     {   
+        id: 20,
         name: "Suco de Cajú", 
         description: "Suco natural de Cajú", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -156,6 +163,7 @@ const menuItems = [
         juiceType: "leite" 
     },
     { 
+        id: 21,
         name: "Suco de Acerola", 
         description: "Suco natural de Acerola", 
         price: 7.99, 
@@ -164,13 +172,15 @@ const menuItems = [
         juiceType: "leite" 
     },
     {   
+        id: 22,
         name: "Suco de Goiaba", 
         description: "Suco natural de Goiaba", 
         price: 7.99, image: "src/assets/logo/logo.png", 
         type: "suco", 
         juiceType: "leite" 
     },
-    {   
+    {  
+        id: 23, 
         name: "Suco de Graviola", 
         description: "Suco natural de Graviola", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -178,6 +188,7 @@ const menuItems = [
         juiceType: "leite" 
     },
     {   
+        id: 24,
         name: "Água", 
         description: "Água mineral", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -185,6 +196,7 @@ const menuItems = [
         juiceType: "mineral"
     },
     {   
+        id: 25,
         name: "Água", 
         description: "Água com gás", 
         price: 7.99, image: "src/assets/logo/logo.png", 
@@ -192,6 +204,7 @@ const menuItems = [
         juiceType: "mineral"
     },
     {
+        id: 26,
         name: "Sobremesa 01",
         description: "",
         price: 0.00,
@@ -199,6 +212,7 @@ const menuItems = [
         type: "sobremesa",
     },
     {
+        id: 27,
         name: "Sobremesa 02",
         description: "",
         price: 0.00,
@@ -206,6 +220,7 @@ const menuItems = [
         type: "sobremesa",
     },
     {
+        id: 28,
         name: "Sobremesa 03",
         description: "",
         price: 0.00,
@@ -213,6 +228,7 @@ const menuItems = [
         type: "sobremesa",
     },
     {
+        id: 29,
         name: "Sobremesa 04",
         description: "",
         price: 0.00,

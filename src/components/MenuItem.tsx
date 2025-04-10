@@ -1,14 +1,15 @@
 import React from "react";
 
 interface MenuItemProps {
+  id: number;
   name: string;
   description: string;
   price: number;
   image: string;
-  addToCart: (name: string, price: number) => void;
+  addToCart: (id: number, name: string, price: number) => void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ name, description, price, image, addToCart }) => {
+const MenuItem: React.FC<MenuItemProps> = ({id, name, description, price, image, addToCart }) => {
   return (
     <div className="p-4 flex gap-4 items-center bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
     <img
@@ -25,7 +26,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, description, price, image, ad
         <p className="font-bold text-xl text-gray-900">R$ {price.toFixed(2)}</p>
         <button
           className="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 hover:scale-105 transform transition-all duration-200 flex items-center gap-2"
-          onClick={() => addToCart(name, price)}
+          onClick={() => addToCart(id, name, price)}
         >
           <i className="fa fa-cart-plus text-lg"></i>
           <span className="text-sm font-medium">Adicionar</span>
