@@ -6,7 +6,7 @@ import logoNumber from "/logo/whatsapp-2.png"
 const Header = () => {
   return (
     <>
-        <header className=" w-full h-[420px] bg-home bg-cover bg-center bg-[url(/src/assets/logo/bg-1.0.png)]">
+        <header className=" w-full h-[420px] bg-home bg-cover bg-center bg-[url(/logo/bg-1.0.png)]">
             <div className='w-full h-full flex flex-col justify-center items-center'>
                 
                 <img className="w-32 transition-transform duration-300 pt-12 pb-5 hover:scale-110" src={logoBurger} alt="Logo" />          
