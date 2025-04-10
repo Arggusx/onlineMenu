@@ -157,27 +157,20 @@ const Menu: React.FC = () => {
       <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
         Água
       </h3>
-      <div className="grid pb-15 grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4">
-        <div className="border-2 border-blue-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300 hover:shadow-xl transition-shadow duration-300 text-center">
-          <h3 className="text-xl font-bold text-gray-800">Água Mineral (Sem Gás)</h3>
-          <p className="text-gray-600 text-xl font-medium mt-2">R$ 3,00</p>
-          <button
-            onClick={() => addToCart(100, "Água Mineral (Sem Gás)", 3)} // Adicionado id temporário
-            className="mt-4 px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 hover:scale-105 transform transition-all duration-200"
-          >
-            Adicionar
-          </button>
-        </div>
-        <div className="border-2 border-blue-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300 hover:shadow-xl transition-shadow duration-300 text-center">
-          <h3 className="text-xl font-bold text-gray-800">Água com Gás</h3>
-          <p className="text-gray-600 text-xl font-medium mt-2">R$ 5,00</p>
-          <button
-            onClick={() => addToCart(101, "Água com Gás", 5)} // Adicionado id temporário
-            className="mt-4 px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-500 hover:scale-105 transform transition-all duration-200"
-          >
-            Adicionar
-          </button>
-        </div>
+      <div>
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-blue-100 from-blue-50 border-2 mb-10 border-blue-200 rounded-3xl">
+        {menuItems
+          .filter((item) => item.type === "aguaSemGas")
+          .map((item, index) => (
+            <MenuItem key={index} {...item} addToCart={addToCart} />
+          ))}
+
+        {menuItems
+          .filter((item) => item.type === "aguaComGas")
+          .map((item, index) => (
+            <MenuItem key={index} {...item} addToCart={addToCart} />
+          ))}
+      </main>
       </div>
       <Footer
         cart={cart}

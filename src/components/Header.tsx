@@ -1,7 +1,7 @@
-import logoBurger from "../assets/logo/logo.png"
-import imageMaps from "../assets/logo/google-maps.png"
-import logoInsta from "../assets/logo/instagram-2.png"
-import logoNumber from "../assets/logo/whatsapp-2.png"
+import logoBurger from "/logo/logo.png"
+import imageMaps from "/logo/google-maps.png"
+import logoInsta from "/logo/instagram-2.png"
+import logoNumber from "/logo/whatsapp-2.png"
 
 const Header = () => {
   return (
