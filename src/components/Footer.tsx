@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ cart, getCartItemCount, removeFromCart 
     quantity: number;
     price: number;
   }
-  
+
   interface Pedido {
     mesa: number;
     itens: { id: number; nome: string; quantidade: number; preco: number }[];
@@ -35,26 +35,26 @@ const Footer: React.FC<FooterProps> = ({ cart, getCartItemCount, removeFromCart 
     telefoneCliente: string;
     valorTotal: string;
   }
-  
+
   interface RespostaApi {
     sucesso: boolean;
     mensagem?: string;
     [key: string]: any;
   }
-  
+
   async function enviarPedido(): Promise<void> {
     if (!mesaId || !nomeCliente || !telefoneCliente || cart.length === 0) {
       alert("Por favor, preencha todos os campos obrigatórios: Mesa, Nome, Telefone e adicione itens ao carrinho.");
       return;
     }
-  
+
     const itensArray: { id: number; nome: string; quantidade: number; preco: number }[] = cart.map((item: ItemCarrinho) => ({
       id: item.id,
       nome: item.name,
       quantidade: item.quantity,
       preco: item.price,
     }));
-  
+
     const valorTotal: string = itensArray.reduce((total: number, item) => total + item.preco * item.quantidade, 0).toString();
     const pedido: Pedido = {
       mesa: Number(mesaId),
@@ -64,20 +64,20 @@ const Footer: React.FC<FooterProps> = ({ cart, getCartItemCount, removeFromCart 
       telefoneCliente: telefoneCliente,
       valorTotal: valorTotal,
     };
-  
+
     try {
 
       const apiUrl: string = import.meta.env.VITE_API_URL;
 
-      const resposta: Response = await fetch(`${apiUrl}`, {
+      const resposta: Response = await fetch(`${apiUrl}/pedidos`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", 
+          "Content-Type": "application/json",
           "Accept": "application/json",
         },
         body: JSON.stringify(pedido),
       });
-  
+
       if (resposta.ok) {
         const dados: RespostaApi = await resposta.json();
         console.log("Sucesso! Pedido enviado:", dados);
@@ -96,7 +96,7 @@ const Footer: React.FC<FooterProps> = ({ cart, getCartItemCount, removeFromCart 
           erroJson = erroTexto;
         }
         console.error("Erro na resposta da API:", erroJson);
-        alert("Erro ao enviar pedido: " + (erroJson.message || erroTexto)); 
+        alert("Erro ao enviar pedido: " + (erroJson.message || erroTexto));
       }
     } catch (erro: unknown) {
       if (erro instanceof Error) {
@@ -248,7 +248,7 @@ const Footer: React.FC<FooterProps> = ({ cart, getCartItemCount, removeFromCart 
         </div>
       )}
     </>
-  );  
+  );
 };
 
 export default Footer;

@@ -1,17 +1,16 @@
-import Header from "../src/components/Header"
-import Nav from "./components/Nav"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import "./index.css"
-import Menu from "./Menu"
-
+import ValidarPedido from "./pages/validatePage"
+import LayoutHome from './LayoutHome'
 
 function App() {
   return (
-    <>
-    <Header/>
-    <Nav/>
-    <h2 className='text-2xl md:text-4xl font-bold text-center mt-10 mb-10'>Conheça nosso cardápio</h2>
-    <Menu/>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LayoutHome />} />
+        <Route path="/validar/:id/:token" element={<ValidarPedido />} />
+      </Routes>
+    </Router>
   )
 }
 

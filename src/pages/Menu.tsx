@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import MenuItem from "./components/MenuItem";
-import menuItems from "./itensData";
-import Footer from "./components/Footer";
+import MenuItem from "../components/MenuItem";
+import menuItems from "../itensData";
+import Footer from "../components/Footer";
 
 interface CartItem {
   id: number;
@@ -158,19 +158,19 @@ const Menu: React.FC = () => {
         Água
       </h3>
       <div>
-      <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-blue-100 from-blue-50 border-2 mb-10 border-blue-200 rounded-3xl">
-        {menuItems
-          .filter((item) => item.type === "aguaSemGas")
-          .map((item, index) => (
-            <MenuItem key={index} {...item} addToCart={addToCart} />
-          ))}
+        <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-blue-100 from-blue-50 border-2 mb-10 border-blue-200 rounded-3xl">
+          {menuItems
+            .filter((item) => item.type === "aguaSemGas")
+            .map((item, index) => (
+              <MenuItem key={index} {...item} addToCart={addToCart} />
+            ))}
 
-        {menuItems
-          .filter((item) => item.type === "aguaComGas")
-          .map((item, index) => (
-            <MenuItem key={index} {...item} addToCart={addToCart} />
-          ))}
-      </main>
+          {menuItems
+            .filter((item) => item.type === "aguaComGas")
+            .map((item, index) => (
+              <MenuItem key={index} {...item} addToCart={addToCart} />
+            ))}
+        </main>
       </div>
       <Footer
         cart={cart}
