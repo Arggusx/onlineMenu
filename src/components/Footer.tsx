@@ -66,10 +66,7 @@ const Footer: React.FC<FooterProps> = ({ cart, getCartItemCount, removeFromCart 
     };
 
     try {
-
-      const apiUrl: string = import.meta.env.VITE_API_URL;
-
-      const resposta: Response = await fetch(`${apiUrl}/pedidos`, {
+      const resposta: Response = await fetch(`${import.meta.env.VITE_MENU_API_URL}/pedidos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

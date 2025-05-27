@@ -15,7 +15,7 @@ export default function ValidarPedido() {
     useEffect(() => {
         const validar = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/qrcode/pedidos/validar/${id}/${token}`);
+                const response = await fetch(`${import.meta.env.VITE_MENU_API_URL}/qrcode/pedidos/validar/${id}/${token}`);
                 if (response.ok) {
                     setStatus('sucesso');
                 } else {
