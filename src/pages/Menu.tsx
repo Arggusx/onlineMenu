@@ -96,7 +96,7 @@ const Menu: React.FC = () => {
       </h2>
 
       {/* REFRIGERANTES */}
-      <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
+      <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-10 px-4 mx-auto max-w-6xl">
         Refrigerantes
       </h3>
       <main className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4 py-6 bg-gradient-to-t to-blue-100 from-blue-50 border-2 mb-10 border-blue-200 rounded-3xl">
@@ -108,11 +108,11 @@ const Menu: React.FC = () => {
       </main>
 
       {/* SUCOS */}
-      <h3 className="text-xl md:text-2xl font-semibold text-orange-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
+      <h3 className="text-xl md:text-2xl font-semibold text-orange-600 mb-10 px-4 mx-auto max-w-6xl">
         Sucos
       </h3>
       {!selectedJuiceType ? (
-        <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl px-4">
+        <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl">
           <div className="border-2 border-orange-300 p-6 rounded-xl shadow-lg bg-gradient-to-t from-orange-100 to-orange-200 hover:shadow-xl transition-shadow duration-300 text-center">
             <h3 className="text-xl font-bold text-gray-800">Sucos com Água</h3>
             <button
@@ -134,12 +134,14 @@ const Menu: React.FC = () => {
         </div>
       ) : (
         <>
-          <button
-            className="ml-10 lg:ml-20 mt-6 px-5 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors duration-200"
+          <div className="mx-auto max-w-6xl">
+            <button
+            className=" px-5 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors duration-200"
             onClick={() => setSelectedJuiceType(null)}
-          >
+            >
             ← Voltar
-          </button>
+            </button>
+          </div>
           <h3 className="text-2xl font-bold mt-6 mb-6 text-center text-gray-800">
             {selectedJuiceType === "agua" ? "Polpas para Suco com Água" : "Polpas para Suco com Leite"}
           </h3>
@@ -154,7 +156,7 @@ const Menu: React.FC = () => {
       )}
 
       {/* ÁGUA */}
-      <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-6 md:text-left md:ml-10 lg:ml-20 bg-gray-100 px-3 pt-1 pb-2 rounded-full inline-block">
+      <h3 className="text-xl md:text-2xl font-semibold text-blue-600 mb-10 px-4 mt-10 mx-auto max-w-6xl">
         Água
       </h3>
       <div>
