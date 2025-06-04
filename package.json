@@ -19,7 +19,7 @@
     "next-navigation": "^1.0.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.6.0",
+    "react-router-dom": "^7.6.2",
     "react-scroll": "^1.9.2"
   },
   "devDependencies": {
